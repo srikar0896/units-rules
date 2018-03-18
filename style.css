@@ -1,0 +1,743 @@
+html,
+article,
+body,
+button,
+input,
+select,
+textarea {
+    font-family: "Open Sans", Arial, sans-serif !important;
+}
+
+html, body, article {
+    font-size: 14px;
+}
+
+/* =============================== NAVIGATION =============================== */
+
+a, a:link, a:visited {
+    text-decoration:none;
+    color:#0b79bd;
+    font-weight: 600;
+}
+a:hover {
+    text-decoration:underline;
+}
+
+/* Streamlined view of related links */
+div.relinfo, div.nextlink, div.previouslink {
+    font-size: small;
+    color: #666;
+}
+div.relinfo > br {
+    display: none;
+}
+div.relinfo div {
+    display: inline;
+}
+div.relinfo div:before {
+    content:' | ';
+}
+
+/* Address child link visual confusion for users */
+/* Child links are separate from the topic. Repeatedly, we have had users comment
+   that the links don't "go" with the preceding section of the parent topic. */
+ul.ullinks {
+    padding-left: 0px;
+    border-top: 1px solid #eee;
+}
+ol.olchildlinks {
+    list-style-type: decimal;
+    border-top: 1px solid #eee;
+}
+
+/* ====================================== CONTENT ====================================== */
+
+div.brand_header {
+    display: none;
+}
+
+div.body, div.topic, body > p.shortdesc {
+    /* 
+    added div.topic to fix formatting for nested topics. 
+    added body > p.shortdesc to fix formatting when topic contains only a short description
+    */
+    /*margin: 0.75em 10px 0 10px !important;*/
+}
+main > article {
+    margin: 10px;
+}
+.abstract, p.shortdesc {
+    font-style:italic;
+    font-size:115%;
+}
+pre.codeblock {
+    /* respect whitespace but wrap to available width */
+    white-space: pre-wrap;
+}
+pre.msgblock, samp.msgph {
+    /* Wrap normally + collapse sequences of whitespace */
+    white-space: normal;
+    font-family: "Open Sans Condensed", "Arial Narrow", sans-serif;
+    background-color: #eee;
+}
+pre.msgblock {
+    white-space: pre-line;
+    border: 1px solid #c0c0c0;
+    padding: 2px 4px;
+}
+span.apiname {
+    font-weight: bold;
+}
+p.stepsection {
+    font-weight: bold;
+    }
+
+/* =================================== Definition Lists =================================== */
+dt.dlterm {
+    margin-top: 1em;
+}
+dd.dd {
+    margin-bottom: 0.25em;
+}
+dl[compact] > dt.dlterm {
+    display: inline-block;
+    width: 20%;
+    text-align:right;
+    vertical-align: top;
+    margin-top:auto;
+}
+dl[compact] > dd.dd {
+    display: inline-block;
+    width: 70%;
+    margin-left: 10px;
+    vertical-align:top;
+    color: #444;
+}
+td > dl:first-child > dt:first-child {
+    margin-top: 0px;
+}
+td > dl > dd {
+    margin-left: 0px;
+}
+
+/* =================================== Notes =================================== */
+div.note {
+    margin-left: 20px;
+    padding: 2px 4px;
+    display: block;
+    border: 1px solid #F9D2A8;
+    background: #FFFFCC  no-repeat scroll;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+div.note:before {
+    display: run-in;
+    position: relative;
+    left: -24px;
+    top: -4px;
+    margin-right: -16px;
+    content: url("img/note_icon.png");
+    z-index: 0;
+    height: 0;
+}
+div.tip {
+    border: 1px solid #A5D8FF;
+    background: #EAF7FF  no-repeat scroll;
+}
+div.tip:before {
+    content: url("img/tip_icon.png");
+}
+div.important {
+    border: 1px solid #FFC5B4;
+    background: #FFE8E0  no-repeat scroll;
+}
+div.important:before {
+    content: url("img/important_icon.png")  ;
+}
+div.fastpath {
+    border: 1px solid #7AB362;
+    background: #D8EED0  no-repeat scroll;
+}
+div.fastpath:before {
+    content: url("img/bestpractice_icon.png")  ;
+}
+div.note>span:first-child+ul {
+    margin-top:-0.5em;
+}
+
+
+ul li, ol li {
+    list-style-image: none;
+    }
+    
+li.li {
+    margin-top: 0.75em;
+    margin-bottom: 0.75em;
+}
+ul.ul > li.li > p, 
+ul.ul > li.li > div, 
+ul.ul > li.li > pre, 
+ul.ul > li.li > blockquote, 
+ul.ul > li.li > dl, 
+ul.ul > li.li > table {
+    font-size: 90%;
+} 
+
+ul[compact] li, ol[compact] li {
+    margin-top: .25em;
+    margin-bottom: .25em;
+}
+
+ol.steps {
+    counter-reset: steps 0;
+    list-style-type: none;
+}
+
+ol.steps > li.step {
+    counter-increment: steps 1;
+}
+ol.steps > li.step:before {
+    display: inline-block;
+    position: absolute;
+    left: 0px;
+    width: 42px;
+    text-align: right;
+    content: counter(steps) " ";
+    font-weight: bold;
+    color: black;
+    /* colors: green=7ab362 orange=ffa500 red=cc0000 gray=646669 */
+}
+
+li.step p.p {
+    margin: 0.5em 0 !important;
+}
+
+
+/* ======== lists in table cells — un-indent ======== */
+/* Only for first-level lists, and only for lists specialized from ol or ul
+   Use 1em outdent on first line and 1em left padding to simulate marker block
+   since width of number is unknown. 
+   Formatting will be imperfect for numbers more than one digit (rare),
+   but instead of bleeding left outside the table cell, it will run
+   into the list item text.
+*/
+td > ol.ol, td > ul.ul {
+    padding-left: 1em;
+}
+td > ul.sl, td > ul.simple {
+    padding-left: 0em;
+}
+td > ol.ol > li, td > ul.ul > li {
+    list-style-position: inside;
+    text-indent: -1em;
+}
+td > ol.ol > li > *, td > ul.ul > li > * {
+    text-indent: 0em;
+}
+/* First-level lists in tables in steps should be numeric, not alpha */
+li.step table td > ol.ol[type="a"] {
+    list-style-type: decimal;
+}
+
+
+
+
+/* ================================================== */
+
+span.uicontrol[class~="keyboard"] {
+    text-transform: uppercase;
+    background-color: #d7d2c8;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    padding: 0 4px;
+    margin: 0 4px;
+    border: 1px solid #333;
+}
+span.uicontrol > img {
+    padding-right: 0px; /* overrrides default css padding of 5px */
+}
+
+img.image {
+    /* usually looks a bit better for icons in line with text */
+    vertical-align: middle;
+}
+table span.menucascade img.image {
+    /* edge case where text does not get aligned correctly */
+    vertical-align: top;
+}
+
+div.fig {
+    margin: 1em 0;
+}
+div.fig.figborder, iframe.object, object {
+    display: inline-block;
+    padding: 20px !important;
+    border: 1px solid #C0C0C0 !important;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+}
+div.fig.figsides {
+    display: inline-block;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    border-left: 1px solid #C0C0C0 !important;
+    border-right: 1px solid #C0C0C0 !important;
+}
+div.fig.top {
+    display: inline-block;
+    padding-top: 20px !important;
+    border-top: 1px solid #C0C0C0 !important;
+}
+div.fig.bottom {
+    display: inline-block;
+    padding-bottom: 20px !important;
+    border-bottom: 1px solid #C0C0C0 !important;
+}
+div.fig.topbot {
+    display: inline-block;
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+    border-top: 1px solid #C0C0C0 !important;
+    border-bottom: 1px solid #C0C0C0 !important;
+}
+
+div.fig > img.image, div.fig > embed.image {
+    max-width: 100%;
+}
+div.fig > img.image:active {
+    max-width: none;
+}
+div.fig.slide {
+    width: 400px;
+    background-color: #eee !important;
+    border: 2px solid red;
+    color: black !important;
+    font-style: normal !important;
+    padding: 0.25em !important;
+    margin: 0.25em;
+}
+
+span.b {
+    font-weight: bold;
+}
+
+.term {
+    font-style: inherit !important;
+}
+div.prereq {
+    margin-left: 0 !important;
+}
+dt.prereq {
+    margin-left: 0 !important;
+    font-weight: bold;
+}
+a.xref {
+    word-wrap: break-word; /* allow long URLs to break in xrefs */
+}
+
+.ExampleRed {
+    color: red;
+}
+.Math {
+    font-family: 'Times New Roman', 'GFS Didot', STIXGeneral, serif;
+}
+.overline {
+    text-decoration: overline;
+}
+span.uicontrol {
+    font-weight: 600;
+}
+.title > span.uicontrol {
+    font-weight: inherit;
+}
+span.wintitle {
+    font-weight: inherit;
+}
+
+
+/* ====================================== TABLES ====================================== */
+table.table, table.simpletable, table.choicetable  {
+    border-collapse: collapse;
+    margin: 1em 0;
+    font-size: small;
+}
+table.table, table.table tr, table.table td, table.table th,
+table.simpletable, table.simpletable tr, table.simpletable td, table.simpletable th,
+table.choicetable, table.choicetable tr, table.choicetable td, table.choicetable th
+{
+    border-color: #b9b9b9;
+}
+table.table, table.simpletable, table.choicetable {
+    border: 1px solid #b9b9b9;
+}
+
+th, td {
+    padding: 4px;
+    text-align: left;
+}
+th {
+    vertical-align: bottom;
+    font-weight: 600;
+}
+tbody th, tbody td {
+    vertical-align: top;
+}
+
+th, td[id], td.shaded {
+    background: #EAF7FF  no-repeat scroll;
+}
+td[headers],th[headers] {
+    background: none transparent;
+    text-align:left;
+}
+/*
+tr.sthead,
+thead > tr,
+table.exampletable tr>td:first-child {
+    background: #EAF7FF  no-repeat scroll;
+}
+*/
+table.table td>*:first-child, 
+table.table td>strong>*:first-child, 
+table.table td>*>li:first-child, 
+table.table th>*:first-child,  
+table.simpletable td>*:first-child, 
+table.simpletable td>strong>*:first-child, 
+table.simpletable td>*>li:first-child, 
+table.simpletable th>*:first-child,  
+table.choicetable td>*:first-child, 
+table.choicetable td>strong>*:first-child, 
+table.choicetable td>*>li:first-child, 
+table.choicetable th>*:first-child  
+{
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* ======= side by side sections ====== */
+@media screen {
+    div.bodydiv.sidebyside > div.section,
+    div.bodydiv.sidebyside > div.bodydiv {
+        display: inline-block;
+        margin-right: 30px;
+    }
+}
+
+/* ====================================== COPYRIGHT ====================================== */
+
+.copyright {
+    clear:both;
+    font-size: small;
+    color: #999;
+    border-top: 1px solid #eee;
+    text-align: center;
+    margin-top: 2em;
+}
+
+/* ====================================== args.ftr ====================================== */
+
+footer nav {
+    font-size: small;
+    text-align: center;
+    margin-top: .5em;
+}
+
+
+/* ====================================== FUTURE ====================================== */
+
+/*main > div#disqus_thread {
+    clear:both;
+    background-color: #eee;
+    padding: 0.5em;
+    border: 1px solid #69C;
+    border-left: 10px solid #69C;
+    margin-top: 1em;
+}*/
+
+
+
+div.fn {
+    font-size: 8pt !important;
+    line-height: 10.5pt;
+    width: 3in;
+    border-top: 1px solid #ccc;
+    clear:both;
+    margin-top: 0 !important;
+
+}
+span.data.userdata {
+    color: #0b79bd;
+}
+
+
+/* ==================== API ==================== */
+
+div.body.api div.example {
+    margin: 0px 0px 4px -4px;
+    background-color: #D8EED0;
+    background: -webkit-linear-gradient(top,#D8EED0,#b6ccae);
+    background: -moz-linear-gradient(left,#D8EED0,#b6ccae);
+    background: linear-gradient(left,#D8EED0,#b6ccae);
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    padding: 0px 4px;
+    border: 1px solid #7AB362;
+}
+
+div.body.api div.example dd.dd {
+    margin-left: 0px;
+}
+
+.related-links {
+    clear: both;
+    margin-top: 1em;
+}
+
+@media screen and (min-width: 1199px) {
+    div.body.api > div.bodydiv, div.body.api > div.example {
+        width: 48%;
+        vertical-align: top;
+    }
+    div.body.api > div.bodydiv {
+        float: left;
+    }
+    div.body.api > div.example {
+        float: right;
+    }
+}
+
+/* ==================== MathJax ==================== */
+div.MathJax_Display {
+    text-align: left !important;
+    margin: 0 !important;
+}
+
+/* ==================== Video Tutorial Scripts ==================== */
+.vtscript[data-audience="internal"] {
+    /*font-style:italic;*/
+    display: inline-block !important;
+    font-size: 13px;
+    color: white;
+    background: #369;
+    padding: 4px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+.vtscript[data-audience="internal"] a, .vtscript[data-audience="internal"] a:link, .vtscript[data-audience="internal"] a:visited {
+    color: #A5D8FF;
+}
+.vtscript th, .vtscript td[id] {
+    background: none;
+}
+.small-caps {
+    font-variant:small-caps;
+}
+
+
+/* ======================= Custom Styles for Embedded User Assistance ======================= */
+
+.embeddedUA {
+    margin: 0;
+}
+.onlyembeddedUA {
+    display: none;
+}
+.embeddedUA .onlyembeddedUA {
+    display: initial;
+}
+.embeddedUA *[data-deliverytarget~='help'] {
+    display: none;
+}
+.embeddedUA *[data-deliverytarget~='help'][data-deliverytarget~='ua'] {
+    display: initial;
+}
+.embeddedUA > article > h1 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    height: 20px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #b9b9b9;
+    padding: 10px;
+    font-size: 18px;
+    color: #333333;
+    overflow: hidden;
+    font-family: "Open Sans Condensed", "Arial Narrow", sans-serif !important;
+}
+.embeddedUA > article > div.body {
+    position: absolute;
+    top: 41px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    overflow:auto;
+    font-size: 13px;
+    padding: 0px 10px;
+    background-color: #f1f1f1;
+    color: #000000;
+}
+.embeddedUA div.body > p.shortdesc {
+    font-size: 13px;
+    font-style:normal;
+}
+.embeddedUA div.body table,
+.embeddedUA div.body table td,
+.embeddedUA div.body table tr {
+    background-color: #ffffff;
+    border-color: #b9b9b9;
+}
+.embeddedUA div.body table tr.sthead th,
+.embeddedUA div.body table tr.sthead {
+    background-color: #333333;
+    border-color: #b9b9b9;
+    color: #ffffff;
+}
+.embeddedUA div.body table td[headers] > strong {
+    font-weight:normal;
+}
+.embeddedUA div.body span.data.userdata {
+    color: #000000;
+    font-weight: bold;
+}
+
+/* Styles for interactive learning content */
+
+div[data-only] {
+    display: none;
+}
+
+.section.lcChallenge {
+    font-family:"Open Sans", Arial, sans-serif ;
+    padding: 0px;
+    border: 6px solid #d7d2c8;
+    width: 520px;
+    height: 220px;
+    overflow: hidden;
+}
+
+.fig.lcInteractionBase.lcSingleSelect {
+    margin: 10px;
+    padding: 0px;
+    width: 500px;
+    height: 200px;
+    -webkit-transition: margin 1s;
+    -moz-transition: margin 1s;
+    transition: margin 1s;
+}
+.fig.lcInteractionBase.lcSingleSelect.answered {
+    margin-top: -215px;
+    -webkit-transition: margin 1s;
+    -moz-transition: margin 1s;
+    transition: margin 1s;
+}
+
+.p.lcQuestionBase.lcQuestion {
+    padding: 0px 4px;
+    overflow:hidden;
+    height: 94px;
+    -webkit-transition: height .5s, margin .5s;
+    -moz-transition: height .5s, margin .5s;
+    transition: height .5s, margin .5s;
+}
+
+.fig.lcInteractionBase.lcSingleSelect.answered .p.lcQuestionBase.lcQuestion,
+.fig.lcInteractionBase.lcSingleSelect.answered .lcAnswerContent {
+}
+
+.lcSingleSelectTitle {
+    font-family:"Open Sans", Arial, sans-serif ;
+    font-size: 1em;
+    height: 22px;
+    background: #d7d2c8;
+    color: #333;
+    padding: 4px;
+    margin-bottom: 0px;
+}
+
+.lcAnswerContent {
+    display: inline-block;
+}
+.fig.lcInteractionBase.lcSingleSelect.answered .lcAnswerContent.checked {
+    /*margin: 0px; 
+    height: 50px;*/
+}
+
+.lcAnswerContent > input[type="radio"] {
+    display: none;
+}
+
+.buttonified, .lcAnswerContent > label {
+    display: block;
+    margin: 0px 10px 0px 5px;
+    width: 190px;
+    height: 42px;
+    line-height: 42px;
+    padding: 3px 20px 3px 20px;
+    background: #a0d705; /* WA Green */
+    border: 1px solid #a0d705; /* WA Green */
+    box-shadow: 1px 1px #6e6e6e;
+    overflow:hidden;
+    text-align:center;
+    font-family:"Open Sans", Arial, sans-serif ;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+.xref.buttonified {
+    color: #333;
+    width: 400px;
+}
+.buttonified:hover, .lcAnswerContent > label:hover {
+    border-color: #0b79bd;
+    cursor:pointer;
+}
+.buttonified > span, .lcAnswerContent > label > span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 120%;
+}
+
+.fig.lcInteractionBase.lcSingleSelect.answered .lcAnswerContent > label {
+    background: #dddddd; /* disabled gray */
+    border-color: #dddddd; /* disabled gray */
+    box-shadow: 1px 1px transparent;
+    font-size: 13px;
+    color: #aaaaaa; /*light gray*/
+}
+.fig.lcInteractionBase.lcSingleSelect.answered .lcAnswerContent > input[type="radio"]:checked + label {
+    background: #a0d705; /* WA Green */
+    border-color: #a0d705; /* WA Green */
+    box-shadow: 1px 1px #6e6e6e;
+    font-size: 14px;
+    color: #333333; /* Rochester Gray */
+
+}
+
+.lcInteractionBase.withDelay {
+    background-image:url(../img/preloader.gif);
+    background-position: 50% 70%;
+    background-repeat:no-repeat;
+}
+
+
+
+.lcFeedback {
+    display: none;
+}
+
+/* @outputclass colors for symbols */
+.color-red { color: red; }
+.color-dd0000, .color-d00 { color: #d00; }
+.color-00aa00 { color: #0a0; }
+.color-blue { color: blue; }
+
+/* ============ MathJax 2.4 Formatting Bug ============ */
+.MathJax nobr > span.math > span {border-left-width:0 !important}
+
+
